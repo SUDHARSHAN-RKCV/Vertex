@@ -1,0 +1,23 @@
+xl_file="app/static/data/team_links.xlsx"
+
+# app credentials and configurations
+APP_NAME=app-name   
+APP_VERSION=1.0
+
+MAINTENANCE_MODE=false
+MAINTENANCE_WINDOW=2026-02-13T00:00:00+05:30/2026-02-15T21:56:00+05:30
+
+SUPPORT_EMAIL=support@email.com
+session_secret_key=your-secret-key
+
+# db credentials and configurations
+#postgres
+schema_name=app-name
+POSTGRES_URI=postgresql://postgres:pass123@localhost/postgres #prod-remote test
+POSTGRES_local_URI=postgresql://postgres:pass123@localhost/postgres #local db -fallback
+
+DASHBOARD_URLS=[{"title": "WAF Dashboard", "url": "https://p.datadoghq.eu/sb"}]   
+
+# API credentials and configurations
+DOMAIN = google.com,yahoo.io
+SSC_API_KEY="api_key"

@@ -1,0 +1,231 @@
+{% extends "base.html" %} {% block content %}
+<body class="home-page">
+  <div class="main-container">
+    <div class="card-container" id="cardContainer">
+      {% if current_user.is_authenticated and current_user.role in ['roc'] %}
+      <a href="team/ROC" target="_self" class="card">
+        <img src="/static/data/logo/ROC.png" class="logo-icon" alt="ROC logo" />
+        <span>ROC</span>
+      </a>
+      {% endif %} {% if current_user.is_authenticated and current_user.role in
+      ['apac'] %}
+      <a href="team/APAC" target="_self" class="card">
+        <img
+          src="/static/data/logo/apac.png"
+          class="logo-icon"
+          alt="APAC logo"
+        />
+        <span>APAC</span>
+      </a>
+      {% endif %} {% if current_user.is_authenticated and current_user.role in
+      ['roc-apac'] %}
+      <a href="team/ROC" target="_self" class="card">
+        <img src="/static/data/logo/ROC.png" class="logo-icon" alt="ROC logo" />
+        <span>ROC</span>
+      </a>
+      <a href="team/APAC" target="_self" class="card">
+        <img
+          src="/static/data/logo/apac.png"
+          class="logo-icon"
+          alt="APAC logo"
+        />
+        <span>APAC Services</span>
+      </a>
+      {% endif %} {% if current_user.is_authenticated and current_user.role in
+      ['csm'] %}
+      <a href="team/CSM" target="_self" class="card">
+        <img src="/static/data/logo/csm.png" class="logo-icon" alt="ROC logo" />
+        <span>CSM</span>
+      </a>
+      {% endif %} {% if current_user.is_authenticated and current_user.role in
+      ['admin'] %}
+      <a href="team/admin" target="_self" class="card">
+        <img
+          src="/static/data/logo/admin.png"
+          class="logo-icon"
+          alt="admin logo"
+        />
+        <span>admin</span>
+      </a>
+      <a href="team/ROC" target="_self" class="card">
+        <img src="/static/data/logo/ROC.png" class="logo-icon" alt="ROC logo" />
+        <span>ROC</span>
+      </a>
+      <a href="team/APAC" target="_self" class="card">
+        <img
+          src="/static/data/logo/apac.png"
+          class="logo-icon"
+          alt="APAC logo"
+        />
+        <span>APAC Services</span>
+      </a>
+      <a href="team/Scipher" target="_self" class="card">
+        <img
+          src="/static/data/logo/scipher.png"
+          class="logo-icon"
+          alt="Scipher Suite logo"
+        />
+        <span>Scipher Suite</span>
+        <a href="team/Scipher_ops" target="_self" class="card">
+        <img
+          src="/static/data/logo/scipher.png"
+          class="logo-icon"
+          alt="Scipher ops logo"
+        />
+        <span>Scipher Ops</span>
+      </a>
+      <a href="team/l1_ops" target="_self" class="card">
+        <img
+          src="/static/data/logo/l1.png"
+          class="logo-icon"
+          alt="Scipher Vx logo"
+        />
+        <span>l1_ops</span>
+      </a>
+      <a href="team/scipher_vx" target="_self" class="card">
+        <img
+          src="/static/data/logo/VX.svg"
+          class="logo-icon"
+          alt="Scipher Vx logo"
+        />
+        <span>Scipher Vx</span>
+      </a>
+      <a href="team/scipher_Fx" target="_self" class="card">
+        <img
+          src="/static/data/logo/FX.svg"
+          class="logo-icon"
+          alt="Scipher Fx logo"
+        />
+        <span>Scipher Fx</span>
+      </a>
+      <a href="team/SOC" target="_self" class="card">
+        <img
+          src="/static/data/logo/SOC.png"
+          class="logo-icon"
+          alt="Scipher SOC logo"
+        />
+        <span>Scipher SOC</span>
+      </a>
+      <a href="team/scipher_Rx" target="_self" class="card">
+        <img
+          src="/static/data/logo/Rx.svg"
+          class="logo-icon"
+          alt="Scipher Rx logo"
+        />
+        <span>Scipher Rx</span>
+      </a>
+      <a href="team/scipher_di" target="_self" class="card">
+        <img
+          src="/static/data/logo/DI.png"
+          class="logo-icon"
+          alt="Scipher DI logo"
+        />
+        <span>Scipher DI</span>
+      </a>
+      <a href="team/ml-ops" target="_self" class="card">
+        <img
+          src="/static/data/logo/ml-ops.png"
+          class="logo-icon"
+          alt="Scipher ml-ops logo"
+        />
+        <span>ML Ops</span>
+      </a>
+      <a href="team/CSM" target="_self" class="card">
+        <img src="/static/data/logo/csm.png" class="logo-icon" alt="ROC logo" />
+        <span>CSM</span>
+      </a>
+      {% endif %} {% if current_user.is_authenticated and current_user.role in
+      ['scipher'] %}
+      <a href="team/ROC" target="_self" class="card">
+        <img src="/static/data/logo/ROC.png" class="logo-icon" alt="ROC logo" />
+        <span>ROC</span>
+      </a>
+      <a href="team/APAC" target="_self" class="card">
+        <img
+          src="/static/data/logo/apac.png"
+          class="logo-icon"
+          alt="APAC logo"
+        />
+        <span>APAC Services</span>
+      </a>
+      <a href="team/Scipher" target="_self" class="card">
+        <img
+          src="/static/data/logo/scipher.png"
+          class="logo-icon"
+          alt="Scipher Suite logo"
+        />
+        <span>Scipher Suite</span>
+      </a>
+      <a href="team/Scipher_ops" target="_self" class="card">
+        <img
+          src="/static/data/logo/scipher.png"
+          class="logo-icon"
+          alt="Scipher ops logo"
+        />
+        <span>Scipher Ops</span>
+      </a>
+      <a href="team/l1_ops" target="_self" class="card">
+        <img
+          src="/static/data/logo/l1.png"
+          class="logo-icon"
+          alt="Scipher Vx logo"
+        />
+        <span>l1_ops</span>
+      </a>
+      <a href="team/scipher_vx" target="_self" class="card">
+        <img
+          src="/static/data/logo/VX.svg"
+          class="logo-icon"
+          alt="Scipher Vx logo"
+        />
+        <span>Scipher Vx</span>
+      </a>
+      <a href="team/scipher_Fx" target="_self" class="card">
+        <img
+          src="/static/data/logo/FX.svg"
+          class="logo-icon"
+          alt="Scipher Fx logo"
+        />
+        <span>Scipher Fx</span>
+      </a>
+      <a href="team/SOC" target="_self" class="card">
+        <img
+          src="/static/data/logo/SOC.png"
+          class="logo-icon"
+          alt="Scipher SOC logo"
+        />
+        <span>Scipher SOC</span>
+      </a>
+      <a href="team/scipher_Rx" target="_self" class="card">
+        <img
+          src="/static/data/logo/Rx.svg"
+          class="logo-icon"
+          alt="Scipher Rx logo"
+        />
+        <span>Scipher Rx</span>
+      </a>
+      <a href="team/scipher_di" target="_self" class="card">
+        <img
+          src="/static/data/logo/DI.png"
+          class="logo-icon"
+          alt="Scipher DI logo"
+        />
+        <span>Scipher DI</span>
+      </a>
+      <a href="team/ml-ops" target="_self" class="card">
+        <img
+          src="/static/data/logo/ml-ops.png"
+          class="logo-icon"
+          alt="Scipher ml-ops logo"
+        />
+        <span>ML Ops</span>
+      </a>
+      <a href="team/CSM" target="_self" class="card">
+        <img src="/static/data/logo/csm.png" class="logo-icon" alt="ROC logo" />
+        <span>CSM</span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</body>
+{%endblock %}

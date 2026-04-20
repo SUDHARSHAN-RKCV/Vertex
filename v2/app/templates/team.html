@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="main-container">
+  
+
+  <div class="card-container" id="cardContainer">
+    
+    {% for link in links %} 
+    
+    {% if team_name | lower in ["roc", "apac"] %}
+    <div class="card-wrapper">
+      <a
+        href="{{ link.href or link['URL'] }}"
+        target="{{ link.target or ('_blank' if link['Type'] == 'external' else '_self') }}"
+        class="card"
+      >
+        <img src="{{ link.logo }}" class="logo-icon" alt="Logo" />
+        <span>{{ link['Link Title'] or link['Team / Title'] }}</span>
+      </a>
+
+      <div class="app-preview">
+        <img src="{{ link.preview_image }}" alt="app Preview" />
+        <p>{{ link.description or "No description available." }}</p>
+      </div>
+    </div>
+    {% else %}
+    <a
+      href="{{ link.href or link['URL'] }}"
+      target="{{ link.target or ('_blank' if link['Type'] == 'external' else '_self') }}"
+      class="card"
+    >
+      <img src="{{ link.logo }}" class="logo-icon" alt="Logo" />
+      <span>{{ link['Link Title'] or link['Team / Title'] }}</span>
+    </a>
+    {% endif %} {% endfor %} 
+    {% if team_name | lower in ["roc","roc-apac","apac"] %}
+      <div class="card-wrapper">
+        <a
+          href="https://p.datadoghq.eu/sb/402b5da2-15d8-11f0-8706-aa9dc95432a3-aaf64cce1f9da8599386448ee6a36c70"
+          target="_blank"
+          class="card"
+        >
+          <img
+            src="/static/data/logo/datadog.png"
+            class="logo-icon"
+            alt="APAC logo"
+          />
+          <span>App Staus</span>
+        </a>
+      </div>
+      {% endif %}
+    </div>
+    {% endblock %}
+  </div>
+</div>

@@ -1,0 +1,105 @@
+{% extends "base.html" %} {% block content %}
+
+<style>
+  .form-wrapper {
+    padding: 30px 40px;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .form-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .form-control,
+  .form-select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+  }
+
+  .team-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .team-checkbox {
+    background: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #dee2e6;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+</style>
+
+<div class="form-wrapper"style="color: black;">
+  <div class="form-card">
+    <h4 class="mb-4">Create User</h4>
+
+    <form method="POST">
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" required class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Role</label>
+        <select name="role" class="form-select" required>
+          <option value="">Select Role</option>
+          <option value="admin" >Admin</option>
+          <option value="roc" >ROC</option>
+          <option value="apac" >APAC</option>
+          <option value="roc-apac">ROC-APAC</option>
+          <option value="scipher">Scipher</option>
+          <option value="csm" >CSM</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" required class="form-control" />
+      </div>
+
+      <div class="form-group"style="color: black;">
+        <label class="form-label">Assign Teams</label>
+        <div class="team-checkbox-group">
+          {% for t in team %}
+          <label class="team-checkbox">
+            <input type="checkbox" name="team" value="{{ t.name }}" />
+            {{ t.name }}
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <a href="{{ url_for('auth.admin_panel') }}" class="btn btn-secondary">
+          Cancel
+        </a>
+        <button type="submit" class="btn btn-primary">Create User</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,4 @@
+1.0
+primay UI and logic designe
+auth and basic security setup with https
+ui updated with bottom bar 

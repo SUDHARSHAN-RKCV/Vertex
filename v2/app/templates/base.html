@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ app_name }}</title>
+    <link rel="icon" type="image/png" href="/static/data/logo/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css"
+    />
+
+    <!-- Bootstrap & FontAwesome -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+  </head>
+  <body>
+    <!-- Topbar -->
+    <div class="topbar">
+      <!-- Topbar-left -->
+      <div class="topbar-left">
+        {% if current_user.is_authenticated %}
+        <i class="fas fa-bars menu-toggle"></i>
+        {% endif %}
+      </div>
+
+      <!-- Topbar-logo -->
+      <div class="logo-center">
+        <span class="logo-title">{{ app_name }}</span>
+        <span class="logo-subtext">
+          Visibility, Efficiency, Reporting, Tracking, Execution eXcellence
+        </span>
+      </div>
+
+      <!-- Topbar-right -->
+      <div class="topbar-right">
+        <div class="search-box" id="searchBox">
+          <input type="text" id="search" placeholder="Search apps or team..." />
+        </div>
+        <i class="fas fa-search" id="searchIcon" title="Search"></i>
+
+        <a href="{{ url_for('main.home') }}" title="Home">
+          <i class="fas fa-home"></i>
+        </a>
+
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('main.logout') }}" title="Logout">
+          <i class="fas fa-unlock"></i>
+        </a>
+        {% else %}
+        <a href="{{ url_for('main.login') }}" title="Login">
+          <i class="fas fa-lock"></i>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- 📂 Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3>Quick Links</h3>
+        <i class="fas fa-times close-menu"></i>
+      </div>
+
+      <div class="sidebar-links">
+        {% if current_user.is_authenticated and current_user.role in ['roc'] %}
+        <a
+          href="{{ url_for('main.team_page', team_name='ROC') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>ROC</span>
+        </a>
+        {% endif %} {% if current_user.is_authenticated and current_user.role in
+        ['apac'] %}
+        <a href="{{ url_for('team_page', team_name='apac') }}" target="_self">
+          <i class="fas fa-users-cog"></i>
+          <span>APAC</span>
+        </a>
+        {% endif %} {% if current_user.is_authenticated and current_user.role in
+        ['roc-apac'] %}
+        <a
+          href="{{ url_for('main.team_page', team_name='ROC') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>ROC</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='apac') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>APAC</span>
+        </a>
+        {% endif %} {% if current_user.is_authenticated and current_user.role in
+        ['admin'] %}
+        <a
+          href="{{ url_for('main.team_page', team_name='admin') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Admin</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='Scipher') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher Suite</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='l1_ops') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>l1_ops</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='scipher_vx') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher Vx</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='scipher_fx') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher Fx</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='SOC') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher SOC</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='scipher_rx') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher Rx</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='ml-ops') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>ML ops</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='scipher_di') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher DI</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='ROC') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>ROC</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='apac') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>APAC</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='csm') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>CSM</span>
+        </a>
+        {% endif %} {% if current_user.is_authenticated and current_user.role in
+        ['csm'] %}
+        <a
+          href="{{ url_for('main.team_page', team_name='csm') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>CSM</span>
+        </a>
+        {% endif %} {% if current_user.is_authenticated and current_user.role in
+        ['scipher'] %}
+        <a
+          href="{{ url_for('main.team_page', team_name='Scipher') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher Suite</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='l1_ops') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>l1_ops</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='scipher_vx') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher Vx</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='scipher_fx') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher Fx</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='SOC') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher SOC</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='scipher_rx') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher Rx</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='ml-ops') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>ML ops</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='scipher_di') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>Scipher DI</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='ROC') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>ROC</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='apac') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>APAC</span>
+        </a>
+        <a
+          href="{{ url_for('main.team_page', team_name='csm') }}"
+          target="_self"
+        >
+          <i class="fas fa-users-cog"></i>
+          <span>CSM</span>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer" id="footer">
+      <div class="foot-center">
+        <span class="team-title"
+          >This application is designed & maintained by Scipher Operations,
+          Bangalore</span
+        >
+        <span class="version"> V 1.0 </span>
+      </div>
+      <!-- Right Side -->
+          {% if current_user.is_authenticated %}
+          <div class="footer-right">
+            <a
+              class="btn btn-sm btn-outline-light"
+              href="mailto:{{ support_email }}?subject= Support Request for {{ app_name }} - "
+            >
+              <i class="fas fa-life-ring me-1"></i> Contact Support
+            </a>
+          </div>
+          {% else %}
+          <div class="footer-right">
+            <a class="btn btn-sm btn-outline-light">
+              <i class="fas fa-life-ring me-1"></i> Contact Support
+            </a>
+          </div>
+          {% endif %}
+    </div>
+
+    {% block content %}{% endblock %}
+
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const toggle = document.querySelector(".menu-toggle");
+      const closeMenu = document.querySelector(".close-menu");
+      const searchBox = document.getElementById("searchBox");
+      const searchIcon = document.getElementById("searchIcon");
+      const searchInput = document.getElementById("search");
+
+      // Sidebar toggle
+      if (toggle)
+        toggle.addEventListener("click", () => sidebar.classList.add("active"));
+      if (closeMenu)
+        closeMenu.addEventListener("click", () =>
+          sidebar.classList.remove("active"),
+        );
+
+      // Toggle search box
+      if (searchIcon) {
+        searchIcon.addEventListener("click", () => {
+          searchBox.classList.toggle("active");
+          if (searchBox.classList.contains("active")) {
+            searchInput?.focus();
+          } else {
+            if (searchInput) searchInput.value = "";
+            document
+              .querySelectorAll(".card")
+              .forEach((card) => (card.style.display = ""));
+          }
+        });
+      }
+
+      // Live search filter
+      if (searchInput) {
+        searchInput.addEventListener("input", () => {
+          const filter = searchInput.value.toLowerCase();
+          document.querySelectorAll(".card").forEach((card) => {
+            const text = card.innerText.toLowerCase();
+            card.style.display = text.includes(filter) ? "" : "none";
+          });
+        });
+      }
+      //app-preview
+
+      const main = document.body;
+
+      document.querySelectorAll(".card-wrapper").forEach((card) => {
+        const preview = card.querySelector(".app-preview");
+
+        // 👉 If this card has no preview, skip attaching hover logic
+        if (!preview) return;
+
+        card.addEventListener("mouseenter", () => {
+          main.classList.add("preview-active");
+
+          const rect = card.getBoundingClientRect();
+          const vw = window.innerWidth;
+          const previewWidth = 300;
+
+          let left = rect.right + 16;
+          let right = "auto";
+
+          // Flip if near right edge
+          if (left + previewWidth > vw) {
+            left = "auto";
+            right = vw - rect.left + 16 + "px";
+            preview.classList.add("flip-left");
+          } else {
+            preview.classList.remove("flip-left");
+          }
+
+          preview.style.left = left === "auto" ? "auto" : left + "px";
+          preview.style.right = right;
+
+          preview.style.visibility = "visible";
+          preview.style.opacity = "1";
+          preview.style.pointerEvents = "auto";
+        });
+
+        card.addEventListener("mouseleave", () => {
+          preview.style.visibility = "hidden";
+          preview.style.opacity = "0";
+          preview.style.pointerEvents = "none";
+
+          main.classList.remove("preview-active");
+        });
+      });
+    </script>
+    <script src="https://www.datadoghq-browser-agent.com/eu1/v5/datadog-rum.js" type="text/javascript"></script>
+    <script>
+      window.DD_RUM && window.DD_RUM.init({
+        applicationId: 'f9432483-74df-4a6a-ae28-05e24660459b',
+        clientToken: 'pub25eb7bca36729d315190c1723b7c02fb',
+        site: 'datadoghq.eu', // CRITICAL: This must be .eu for your tenant
+        service: 'vertex',
+        env: 'prod',
+        version: '1.0.0',
+        sessionSampleRate: 100,
+        trackUserInteractions: true, // Tracks clicks and scrolls
+        trackResources: true,// Tracks image/script load times
+        trackLongTasks: true,// Identifies UI freezes
+        defaultPrivacyLevel: 'mask-user-input',
+        });
+    </script>
+    <script>
+      {% if current_user.is_authenticated %}
+        window.DD_RUM && window.DD_RUM.setUser({
+          id: '{{ current_user.id }}',
+        });
+      {% endif %}
+    </script>
+    <script>
+      (function() {
+        let idleTimer; // 5 minutes
+        const timeoutDuration = 5 * 60 * 1000;
+     
+        function stopDatadog() {
+          if (window.DD_RUM) {
+            console.log("Datadog: Session stopped due to inactivity.");
+            window.DD_RUM.stopSession();
+          }
+        }
+     
+        function resetTimer() {
+          clearTimeout(idleTimer);
+          idleTimer = setTimeout(stopDatadog, timeoutDuration);
+        }
+        
+     
+        // Listens for mouse movement, clicks, or typing to keep session alive
+        window.onload = resetTimer;
+        document.onmousemove = resetTimer;
+        document.onkeypress = resetTimer;
+        document.onclick = resetTimer;
+        document.addEventListener("visibilitychange",function(){
+          if(document.visibilityState==="hidden"){
+            if(window.DD_RUM){DD_RUM.addAction("tab_hidden_or_closed");}}});
+      })();
+  </script>
+  </body>
+</html>
